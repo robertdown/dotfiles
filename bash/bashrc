@@ -1,0 +1,12 @@
+# bashrc file
+
+# Import our aliases
+if [ -e ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
+
+# Prompt changes
+PS1="\u \A \W $ "
+
+# Path Improvements
+PATH=$PATH:~/.dotfiles/bin;
