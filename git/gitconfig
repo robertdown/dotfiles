@@ -9,8 +9,8 @@
 
 # Global Config
 [user]
-  name = "Robert Down"
-  email = "rdown@rdtservices.net"
+	name = Robert Down
+	email = rdown@rdtservices.net
   #signingkey = **Your GPG ID**
 
 [branch "master"]
@@ -46,6 +46,7 @@
 [core]
   pager = less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = /Users/rdown/.gitignore
 
 [diff]
   tool = vimdiff
@@ -132,3 +133,9 @@
   rex = remote rm
   rem = remote rename
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

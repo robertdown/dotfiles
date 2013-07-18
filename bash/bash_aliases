@@ -2,6 +2,7 @@
 # http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
 
 alias ls='ls -lacG'
+alias sl='ls'
 alias g='git'
 alias c='clear'
 alias z='sudo zendctl'
@@ -42,3 +43,4 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias wget='wget -c'
 alias gs='g status'
+alias gcom='g commit -m'

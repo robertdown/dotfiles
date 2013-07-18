@@ -27,3 +27,34 @@ Host *
     #ControlMaster auto
     #ControlPath ~/.ssh/master/%r@%h:%p
 
+Host sm
+    HostName starlightmedia.us
+    Port 2222
+    PreferredAuthentications publickey
+
+Host monkey-dev
+    HostName dev.streammonkey.com
+    Port 32792
+    IdentityFile=~/pems/sm2012.pem
+    User=ubuntu
+
+Host monkey-control
+    HostName monkeycontrol.streammonkey.com
+    IdentityFile=~/pems/sm2012.pem
+    User=ubuntu
+
+Host rdown-old
+    HostName 23.21.251.167
+    User=rdown
+
+Host rdown-old-emerg
+    HostName 23.21.251.167
+    IdentityFile=~/pems/starlightmedia.pem
+    User=ec2-user
+
+Host rdown
+    HostName 23.23.225.233
+    IdentityFile=~/pems/rdtservices.pem
+    User=ec2-user
+    Port=32792
+    

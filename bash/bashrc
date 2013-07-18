@@ -5,8 +5,13 @@ if [ -e ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
+# Git branch in prompt.
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+
 # Prompt changes
-PS1="\u \A \W $ "
+PS1="\u [\A] \W\e[0;34m\$(parse_git_branch)\e[m \$ "
 
 # Path Improvements
 PATH=$PATH:~/.dotfiles/bin;

@@ -1,0 +1,103 @@
+" My vim file
+
+set nocompatible
+
+call pathogen#infect() 
+syntax on
+
+" change the mapleader from \ to ,
+let mapleader=","
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+set hidden
+
+set nowrap        " don't wrap lines
+set tabstop=4     " a tab is four spaces
+set backspace=indent,eol,start
+                  " allow backspacing over everything in insert mode
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch     " set show matching parenthesis
+set ignorecase    " ignore case when searching
+set smartcase     " ignore case if search pattern is all lowercase,
+                  "    case-sensitive otherwise
+set smarttab      " insert tabs on the start of a line according to
+                  "    shiftwidth, not tabstop
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+
+set title
+
+set nobackup
+set noswapfile
+
+set noruler
+set laststatus=2
+set statusline=
+set statusline+=[File:\ \%f]
+set statusline+=[%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+"set statusline+=%{GitBranchInfoString()}
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P   "percent through file
+set statusline+=
+
+filetype plugin indent on
+
+if('has_autocmd')
+    autocmd filetype python set expandtab
+endif
+
+set pastetoggle=<F2>
+
+"set mouse=a
+
+" ****************
+" Lots of mappings
+" ****************
+
+" Ctrl-u = uppercase selected word
+nnoremap <leader><c-u> viwU<esc>
+
+" Ctrl-l = lowercase selected word
+nnoremap <leader><c-l> viwu<esc>
+
+" ev = Open a vertical split to .vimrc 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" sv = Source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Map H to the beginning of line
+" Map L to the end of line
+" J to the last line
+" K to the first line
+nnoremap H 0
+nnoremap L $
+nnoremap J G
+nnoremap K <esc>:0<cr>
+
+" Best mapping ever
+inoremap jk <esc>l
+
+" My email
+iabbrev @@ rdown@rdtservices.net
+
+" Signature
+iabbrev ssig --<cr>Robert Down
+" End Learn Vim the hardway
+
+nnoremap ; :
+
+cmap w!! w !sudo tee % >/dev/null
