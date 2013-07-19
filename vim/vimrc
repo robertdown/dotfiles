@@ -14,7 +14,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 set hidden
 
-set nowrap        " don't wrap lines
+set wrap        " wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -61,7 +61,7 @@ endif
 
 set pastetoggle=<F2>
 
-"set mouse=a
+set mouse=a
 
 " ****************
 " Lots of mappings
@@ -88,6 +88,11 @@ nnoremap L $
 nnoremap J G
 nnoremap K <esc>:0<cr>
 
+" Disable the esc key in Insert mode
+inoremap <esc> <nop>
+
+nnoremap ; :
+
 " Best mapping ever
 inoremap jk <esc>l
 
@@ -98,6 +103,9 @@ iabbrev @@ rdown@rdtservices.net
 iabbrev ssig --<cr>Robert Down
 " End Learn Vim the hardway
 
-nnoremap ; :
-
 cmap w!! w !sudo tee % >/dev/null
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
