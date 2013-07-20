@@ -61,7 +61,7 @@ endif
 
 set pastetoggle=<F2>
 
-set mouse=a
+" set mouse=a
 
 " ****************
 " Lots of mappings
@@ -87,6 +87,9 @@ nnoremap H 0
 nnoremap L $
 nnoremap J G
 nnoremap K <esc>:0<cr>
+
+" Sensible save commands
+nnoremap <c-s> :w<cr>
 
 " Disable the esc key in Insert mode
 inoremap <esc> <nop>

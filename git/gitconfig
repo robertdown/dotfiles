@@ -11,7 +11,7 @@
 [user]
 	name = Robert Down
 	email = rdown@rdtservices.net
-  #signingkey = **Your GPG ID**
+  	signingkey = "5D4305E9"
 
 [branch "master"]
   remote = origin
@@ -64,6 +64,7 @@
   bl = branch -v
   bL = branch -av
   bx = branch -d
+  br = branch
   bX = branch -D
   bm = branch -m
   bM = branch -M
