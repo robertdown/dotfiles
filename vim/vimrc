@@ -14,7 +14,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 set hidden
 
-set wrap        " wrap lines
+"set wrap        " wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -49,9 +49,10 @@ set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
 "set statusline+=%{GitBranchInfoString()}
 set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P   "percent through file
+set statusline+=%l/%L		"cursor line/total lines
+set statusline+=\ %P		"percent through file
 set statusline+=
+"set spell spelllang=en_us	"Spell check
 
 filetype plugin indent on
 
@@ -95,6 +96,9 @@ nnoremap <c-s> :w<cr>
 inoremap <esc> <nop>
 
 nnoremap ; :
+
+" Toggle spell check
+nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
 
 " Best mapping ever
 inoremap jk <esc>l

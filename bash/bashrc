@@ -11,7 +11,8 @@ parse_git_branch() {
 }
 
 # Prompt changes
-PS1="\u [\A] \W\e[0;34m\$(parse_git_branch)\e[m \$ "
+PS1="\u [\A] \W\e[0;34m\]$(parse_git_branch)\e[m \]$ "
+#PS1="\u \A \W $(parse_git_branch) $"
 
 # Path Improvements
-PATH=$PATH:~/.dotfiles/bin;
+PATH=$PATH:~/.dotfiles/bin:/usr/local/bin:/usr/local/src/play:/usr/local/src/scala:~/bin;

@@ -42,6 +42,7 @@ alias firewall=iptlist
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
 alias wget='wget -c'
+alias svim='sudo vim'
 
 # Git aliases
 alias gs='g status'
