@@ -12,12 +12,20 @@ let mapleader=","
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-set hidden
+" Color Scheme --- {{{
+let g:kolor_italic=1                    " Enable italic. Default: 1
+let g:kolor_bold=1                      " Enable bold. Default: 1
+let g:kolor_underlined=0                " Enable underline for 'Underlined'. Default: 0
+let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+colorscheme kolor
+" End Color Scheme --- }}}
 
-"set wrap        " wrap lines
+set hidden
+set wrap        " wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
+set textwidth=80  " Set the textwidth to 80 characters
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
@@ -39,6 +47,8 @@ set noswapfile
 
 set noruler
 set laststatus=2
+
+" Status Line --- {{{
 set statusline=
 set statusline+=[File:\ \%f]
 set statusline+=[%{&ff}] "file format
@@ -52,6 +62,8 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L		"cursor line/total lines
 set statusline+=\ %P		"percent through file
 set statusline+=
+" End Status Line --- }}}
+
 "set spell spelllang=en_us	"Spell check
 
 filetype plugin indent on
@@ -74,6 +86,9 @@ nnoremap <leader><c-u> viwU<esc>
 " Ctrl-l = lowercase selected word
 nnoremap <leader><c-l> viwu<esc>
 
+" " = surround with quotes
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
 " ev = Open a vertical split to .vimrc 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
@@ -93,7 +108,7 @@ nnoremap K <esc>:0<cr>
 nnoremap <c-s> :w<cr>
 
 " Disable the esc key in Insert mode
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 nnoremap ; :
 

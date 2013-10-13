@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-riv"]
 	path = vim/bundle/vim-riv
 	url = https://github.com/Rykka/riv.vim.git
+[submodule "vim/bundle/vim-kolor"]
+	path = vim/bundle/vim-kolor
+	url = https://github.com/zeis/vim-kolor.git
