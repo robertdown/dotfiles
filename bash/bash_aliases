@@ -43,6 +43,8 @@ alias firewall=iptlist
 #alias chgrp='chgrp --preserve-root'
 alias wget='wget -c'
 alias svim='sudo vim'
+alias pu='/usr/local/bin/phpunit'
+alias cmp='composer'
 
 # Git aliases
 alias gs='g status'

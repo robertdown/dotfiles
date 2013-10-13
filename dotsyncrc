@@ -64,6 +64,7 @@ ssh
 #tmux/tmux.conf
 #tmux/tmuxinator
 #vim/dotvim:.vim
+vim/vim
 vim/vimrc
 vim/bundle
 #vim/gvimrc
