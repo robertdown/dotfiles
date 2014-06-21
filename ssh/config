@@ -58,3 +58,17 @@ Host rdown
     User=ec2-user
     Port=32792
     
+Host starlightmedia.us
+	HostName starlightmedia.us
+	Port 2222
+
+Host aletheia
+	HostName aletheiagroup.net
+	Port 22
+	User=aletheiagroup.net
+	IdentityFile=~/pems/aletheiagroup.net.pem
+
+Host local
+	HostName robertdown.net
+	Port 22
+	User=rdown

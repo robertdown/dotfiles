@@ -13,19 +13,16 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Color Scheme --- {{{
-let g:kolor_italic=1                    " Enable italic. Default: 1
-let g:kolor_bold=1                      " Enable bold. Default: 1
-let g:kolor_underlined=0                " Enable underline for 'Underlined'. Default: 0
-let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
-colorscheme kolor
+set background=dark
+colorscheme knoxville
 " End Color Scheme --- }}}
 
 set hidden
-set wrap        " wrap lines
+"set wrap        " wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
-set textwidth=80  " Set the textwidth to 80 characters
+" set textwidth=80  " Set the textwidth to 80 characters
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set number        " always show line numbers
@@ -47,6 +44,11 @@ set noswapfile
 
 set noruler
 set laststatus=2
+
+" Show tabs and trailing characters.
+"set listchars=tab:»·,trail:·,eol:¬
+set listchars=tab:»·,trail:·
+set list
 
 " Status Line --- {{{
 set statusline=
@@ -70,7 +72,16 @@ filetype plugin indent on
 
 if('has_autocmd')
     autocmd filetype python set expandtab
+	autocmd VimEnter * NERDTree
+	autocmd BufEnter * NERDTreeMirror
+	autocmd VimEnter * wincmd
 endif
+
+autocmd BufRead,BufNewFile *.txt,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT
+	        \ setlocal autoindent expandtab tabstop=4 softtabstop=2 shiftwidth=2 filetype=asciidoc
+	        \ textwidth=70 wrap formatoptions=tcqn
+	        \ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
+	        \ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
 
 set pastetoggle=<F2>
 
@@ -104,8 +115,17 @@ nnoremap L $
 nnoremap J G
 nnoremap K <esc>:0<cr>
 
+" Move between buffers
+nnoremap <c-h> <c-w>h<esc>
+nnoremap <c-j> <c-w>j<esc>
+nnoremap <c-k> <c-w>k<esc>
+nnoremap <c-l> <c-w>l<esc>
+
 " Sensible save commands
 nnoremap <c-s> :w<cr>
+
+nnoremap <leader>v :set paste<cr>
+nnoremap <leader>nv :set nopaste<cr>
 
 " Disable the esc key in Insert mode
 " inoremap <esc> <nop>
@@ -121,6 +141,9 @@ inoremap jk <esc>l
 " My email
 iabbrev @@ rdown@rdtservices.net
 
+" Current date/time
+iab <exp> dts strftime("%Y/%m/%d")
+
 " Signature
 iabbrev ssig --<cr>Robert Down
 " End Learn Vim the hardway
@@ -131,3 +154,4 @@ cmap w!! w !sudo tee % >/dev/null
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+

@@ -3,7 +3,7 @@
 
 alias ls='ls -lacG'
 alias sl='ls'
-alias g='git'
+alias g='/usr/bin/git'
 alias c='clear'
 alias z='sudo zendctl'
 alias cd..='cd ..'
@@ -45,7 +45,12 @@ alias wget='wget -c'
 alias svim='sudo vim'
 alias pu='/usr/local/bin/phpunit'
 alias cmp='composer'
+alias dr='drush'
+alias easy_install='sudo easy_install'
+alias flushcache='dscacheutil -flushcache'
 
 # Git aliases
 alias gs='g status'
 alias gcom='g commit -m'
+
+alias sc=sproutcore

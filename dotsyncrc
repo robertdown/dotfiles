@@ -67,6 +67,7 @@ ssh
 vim/vim
 vim/vimrc
 vim/bundle
+vim/autoload
 #vim/gvimrc
 #wget/wgetrc
 #zsh/fasdrc

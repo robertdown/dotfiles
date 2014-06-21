@@ -10,7 +10,7 @@
 # Global Config
 [user]
 	name = Robert Down
-	email = rdown@rdtservices.net
+	email = robertdown@live.com
   	signingkey = "5D4305E9"
 
 [branch "master"]
@@ -49,13 +49,14 @@
 	excludesfile = /Users/rdown/.gitignore
 
 [diff]
-  tool = vimdiff
+	tool = diffmerge
 
 [difftool]
   prompt = false
 
 [merge]
-  tool = vimdiff
+	tool = diffmerge
+	ff = true
 
 [alias]
   # branch
@@ -135,10 +136,15 @@
   rem = remote rename
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
 [push]
 	default = simple
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true

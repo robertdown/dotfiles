@@ -5,14 +5,38 @@ if [ -e ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
+if test -f ~/.rvm/scripts/rvm; then
+    [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
+fi
+
 # Git branch in prompt.
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' 
 }
 
 # Prompt changes
-PS1="\u [\A] \W\e[0;34m\]$(parse_git_branch)\e[m \]$ "
-#PS1="\u \A \W $(parse_git_branch) $"
+PS1="\[\033[0;37m\]\u [\A] \W \[\033[0;31m\]\$(parse_git_branch)\[\033[m\] \$ "
 
 # Path Improvements
-PATH=$PATH:~/.dotfiles/bin:/usr/local/bin:/usr/local/src/play:/usr/local/src/scala:~/bin;
+PATH=/opt/local/bin:/opt/local/sbin:$PATH
+PATH=$PATH:~/.dotfiles/bin;
+PATH=$PATH:/usr/local/bin;
+PATH=$PATH:/usr/local/src/play;
+PATH=$PATH:/usr/local/src/scala;
+PATH=$PATH:~/bin;
+PATH=$PATH:~/.rvm/bin;
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH="/usr/local/narwhal/bin:$PATH"
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:/usr/local/git/bin
+PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+ 
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export CAPP_BUILD="/Users/rdown/cap/build/"
+
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+	. /opt/local/etc/profile.d/bash_completion.sh
+fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session
