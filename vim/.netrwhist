@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/usr/local/zend/apache2/htdocs/insta/module/Application/config'
-let g:netrw_dirhist_2='/Users/rdown/Desktop/down_to_earth_pelican_theme/static/.sass-cache'
-let g:netrw_dirhist_3='/usr/local/zend/apache2/htdocs/php-git'
-let g:netrw_dirhist_4='/usr/local/zend/apache2/htdocs/new-openemr/wiki'
-let g:netrw_dirhist_5='/Users/rdown/.ssh'
-let g:netrw_dirhist_6='/Users/rdown/Projects/modern-trac/build/lib'
-let g:netrw_dirhist_7='/Users/rdown/Projects/modern-trac/claritytheme/htdocs'
-let g:netrw_dirhist_8='/Users/rdown/Desktop/pydotorgtheme'
-let g:netrw_dirhist_9='/usr/local/zend/apache2/htdocs/api.streammonkey.com/config/deploy'
+let g:netrw_dirhist_cnt =0

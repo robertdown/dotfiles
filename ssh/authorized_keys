@@ -1,12 +1,1 @@
-#
-# dotphiles : https://github.com/dotphiles/dotphiles
-#
-# Allow access from the following keys
-#
-# Authors:
-#   Ben O'Hara <bohara@gmail.com>
-#
-
-# Add your ssh key here
-
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCznUrwlk2lJ15GK2GbkukeIqc/HYskXjy8cALGhpPtb+Z4SqGgJmmarQTCwLD1CUdKL9qqHsDG1RwGo8rff7HNCtSOaRFGGtuT3yfr7nQ6LVpozH04SOVVjw9CeiKEMQbMhOmRFeQqVJGALOnDhywR2VgoUqjpjhZTOQAHIv1klltg2iIiILs5/hHVLO4A4VnL9xD8QSlLmJXYYXIscvus+67kaVrBiKfyv1TsMB30fE4DxvvDjJ8u21cEoggjY0UAs1FNEC0YJOcCaiQ+PXOuo4YLessC+kj+r9FS2q38H15chzRGwuiICsWyfLs46tFpeQ9Yj6r2o3CRlKRvxFRZ robertdown@live.com

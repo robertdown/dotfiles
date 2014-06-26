@@ -68,7 +68,8 @@ Host aletheia
 	User=aletheiagroup.net
 	IdentityFile=~/pems/aletheiagroup.net.pem
 
-Host local
-	HostName robertdown.net
-	Port 22
-	User=rdown
+#Host local
+#	IdentityFile=~/pems/rdown
+#	HostName robertdown.net
+#	Port 22
+#	User=rdown
