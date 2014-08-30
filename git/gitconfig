@@ -72,6 +72,8 @@
   bs = show-branch
   bS = show-branch -a
 
+  sm = submodule
+
   # checkout/fetch/merge/push/rebase
   # checkout
   co  = checkout
