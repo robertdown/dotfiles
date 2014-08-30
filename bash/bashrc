@@ -18,21 +18,16 @@ parse_git_branch() {
 PS1="\[\033[0;37m\]\u [\A] \W \[\033[0;31m\]\$(parse_git_branch)\[\033[m\] \$ "
 
 # Path Improvements
-PATH=/opt/local/bin:/opt/local/sbin:$PATH
-PATH=$PATH:~/.dotfiles/bin;
-PATH=$PATH:/usr/local/bin;
-PATH=$PATH:/usr/local/src/play;
-PATH=$PATH:/usr/local/src/scala;
-PATH=$PATH:~/bin;
-PATH=$PATH:~/.rvm/bin;
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH="/usr/local/narwhal/bin:$PATH"
-PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:/usr/local/git/bin
-PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+if [ -d "$HOME/.rvm/bin" ]: then
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
+if [ -d "$HOME/.local/bin" ]: then
+    PATH=$PATH:$HOME/.local/bin
+fi
  
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=vim
+export VISUAL=vim
 export CAPP_BUILD="/Users/rdown/cap/build/"
 
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
