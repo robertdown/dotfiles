@@ -5,6 +5,8 @@ set nocompatible
 call pathogen#infect() 
 syntax on
 
+set t_Co=256
+
 " change the mapleader from \ to ,
 let mapleader=","
 
@@ -18,7 +20,7 @@ colorscheme knoxville
 " End Color Scheme --- }}}
 
 set hidden
-"set wrap        " wrap lines
+"set wrap         " wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -31,19 +33,18 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
-                  "    case-sensitive otherwise
+                  " case-sensitive otherwise
 set smarttab      " insert tabs on the start of a line according to
-                  "    shiftwidth, not tabstop
+                  " shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
-
 set title
-
 set nobackup
 set noswapfile
-
 set noruler
 set laststatus=2
+set pastetoggle=<F2>
+set mouse=a
 
 " Show tabs and trailing characters.
 "set listchars=tab:»·,trail:·,eol:¬
@@ -72,6 +73,7 @@ filetype plugin indent on
 
 if('has_autocmd')
     autocmd filetype python set expandtab
+    autocmd VimEnter * GuiColorScheme knoxville
 	autocmd VimEnter * NERDTree
 	autocmd BufEnter * NERDTreeMirror
 	autocmd VimEnter * wincmd
@@ -83,29 +85,20 @@ autocmd BufRead,BufNewFile *.txt,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT
 	        \ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
 	        \ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
 
-set pastetoggle=<F2>
-
-" set mouse=a
 
 " ****************
 " Lots of mappings
 " ****************
-
 " Ctrl-u = uppercase selected word
 nnoremap <leader><c-u> viwU<esc>
-
 " Ctrl-l = lowercase selected word
 nnoremap <leader><c-l> viwu<esc>
-
 " " = surround with quotes
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-
 " ev = Open a vertical split to .vimrc 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
 " sv = Source .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
 " Map H to the beginning of line
 " Map L to the end of line
 " J to the last line
@@ -114,40 +107,28 @@ nnoremap H 0
 nnoremap L $
 nnoremap J G
 nnoremap K <esc>:0<cr>
-
 " Move between buffers
 nnoremap <c-h> <c-w>h<esc>
 nnoremap <c-j> <c-w>j<esc>
 nnoremap <c-k> <c-w>k<esc>
 nnoremap <c-l> <c-w>l<esc>
-
 " Sensible save commands
 nnoremap <c-s> :w<cr>
-
 nnoremap <leader>v :set paste<cr>
 nnoremap <leader>nv :set nopaste<cr>
-
 " Disable the esc key in Insert mode
 " inoremap <esc> <nop>
-
 nnoremap ; :
-
 " Toggle spell check
 nnoremap <F7> :setlocal spell! spelllang=en_us<cr>
-
 " Best mapping ever
 inoremap jk <esc>l
-
 " My email
-iabbrev @@ rdown@rdtservices.net
-
+iabbrev @@ robertdown@live.com
 " Current date/time
 iab <exp> dts strftime("%Y/%m/%d")
-
 " Signature
 iabbrev ssig --<cr>Robert Down
-" End Learn Vim the hardway
-
 cmap w!! w !sudo tee % >/dev/null
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to

@@ -13,3 +13,6 @@
 [submodule "zsh/dotzsh"]
 	path = zsh/dotzsh
 	url = https://github.com/dotphiles/dotzsh.git
+[submodule "vim/vim/bundle/knoxville"]
+	path = vim/vim/bundle/knoxville
+	url = https://rdown@bitbucket.org/rdown/knoxville-vim.git
