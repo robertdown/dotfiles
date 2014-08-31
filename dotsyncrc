@@ -66,8 +66,6 @@ ssh
 #vim/dotvim:.vim
 vim/vim
 vim/vimrc
-vim/bundle
-vim/autoload
 #vim/gvimrc
 #wget/wgetrc
 #zsh/fasdrc
@@ -83,6 +81,7 @@ vim/autoload
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 rdown-mbp			
+iMac.local
 #host1.example.com               git=ANY                        files=custom/dotfile    #git repo, pull from anywhere and link a custom dotfile
 #host2.example.com               git=ANY                                                #git repo, pull from anywhere
 #host3.example.com               git=ANY                                                #git repo, pull from anywhere
