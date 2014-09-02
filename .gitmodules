@@ -16,3 +16,21 @@
 [submodule "vim/vim/bundle/knoxville"]
 	path = vim/vim/bundle/knoxville
 	url = https://rdown@bitbucket.org/rdown/knoxville-vim.git
+[submodule "vim/vim/bundle/nerdtree"]
+	path = vim/vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/vim/bundle/vim-colors-solarized"]
+	path = vim/vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/vim/bundle/vdebug"]
+	path = vim/vim/bundle/vdebug
+	url = git@github.com:joonty/vdebug.git
+[submodule "vim/vim/bundle/riv"]
+	path = vim/vim/bundle/riv
+	url = git@github.com:vim-scripts/riv.vim.git
+[submodule "vim/vim/bundle/fugitive"]
+	path = vim/vim/bundle/fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "vim/vim/bundle/tagbar"]
+	path = vim/vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
