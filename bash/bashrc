@@ -1,16 +1,26 @@
 # bashrc file
 
 # Import our aliases
-if [ -e ~/.bash_aliases ]; then
-  source ~/.bash_aliases
+if [ -a ~/.bash_aliases ]
+then
+	source ~/.bash_aliases
 fi
 
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='xterm-256color'
+# Import any env vars
+if [ -a ~/.envvars ]
+then
+	source ~/.envvars
+fi
+
+# xterm colors
+if [ -a /usr/share/terminfo/x/xterm-256color ]
+then
+	export TERM='xterm-256color'
 else
     export TERM='xterm-color'
 fi
 
+# RVM??
 if test -f ~/.rvm/scripts/rvm; then
     [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
 fi
@@ -23,21 +33,18 @@ parse_git_branch() {
 # Prompt changes
 PS1="\[\033[0;34m\]\u [\A] \W \[\033[0;33m\]\$(parse_git_branch)\[\033[m\] \$ "
 
-# Path Improvements
-if [ -d "$HOME/.rvm/bin" ]: then
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
-
-if [ -d "$HOME/.local/bin" ]: then
-    PATH=$PATH:$HOME/.local/bin
+if [ -d "$HOME/.local/bin" ]
+then
+	PATH=$PATH:$HOME/.local/bin
 fi
  
 export EDITOR=vim
 export VISUAL=vim
 export CAPP_BUILD="/Users/rdown/cap/build/"
 
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-	. /opt/local/etc/profile.d/bash_completion.sh
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]
+then
+	source /opt/local/etc/profile.d/bash_completion.sh
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session

@@ -16,7 +16,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Color Scheme --- {{{
 set background=dark
-colorscheme solarized
+colorscheme knoxville
 " End Color Scheme --- }}}
 
 set hidden
@@ -72,11 +72,11 @@ set statusline+=
 filetype plugin indent on
 
 " autocmd VimEnter * GuiColorScheme knoxville
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
 
 if('has_autocmd')
     autocmd filetype python set expandtab
-	autocmd BufEnter * NERDTreeMirror
+"	autocmd BufEnter * NERDTreeMirror
 	autocmd VimEnter * wincmd
 endif
 

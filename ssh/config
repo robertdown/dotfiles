@@ -35,12 +35,12 @@ Host sm
 Host monkey-dev
     HostName dev.streammonkey.com
     Port 32792
-    IdentityFile=~/pems/sm2012.pem
+    IdentityFile=~/Documents/pems/sm2012.pem
     User=ubuntu
 
 Host monkey-control
     HostName monkeycontrol.streammonkey.com
-    IdentityFile=~/pems/sm2012.pem
+    IdentityFile=~/Documents/pems/sm2012.pem
     User=ubuntu
 
 Host rdown-old

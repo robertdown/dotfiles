@@ -54,3 +54,4 @@ alias gs='g status'
 alias gcom='g commit -m'
 
 alias sc=sproutcore
+alias v='vagrant'
