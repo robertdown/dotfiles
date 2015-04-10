@@ -13,6 +13,7 @@
 
 # IDE specific
 dwsync.xml
+*.iml
 *.tmp
 *.wpr
 *.project
@@ -23,7 +24,8 @@ dwsync.xml
 *.komodoproject
 .komodotools
 nbproject
-.idea
+.idea/
+*.sublime-*
 
 # OS generated files
 ._*
@@ -46,6 +48,7 @@ Thumbs.db
 svn-commit.*
 tags
 TAGS
+.vagrant/
 
 ### LATEX ###
 *.acn

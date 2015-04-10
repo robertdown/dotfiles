@@ -1,4 +1,6 @@
 " My vim file
+"map -a :call SyntaxAttr()<CR>
+"autocmd FuncUndefined * exe 'runtime autoload/' . expand('<afile>') . '.vim'
 
 set nocompatible
 
@@ -16,7 +18,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Color Scheme --- {{{
 set background=dark
-colorscheme knoxville
+colorscheme starlight
 " End Color Scheme --- }}}
 
 set hidden
@@ -47,8 +49,8 @@ set pastetoggle=<F2>
 set mouse=a
 
 " Show tabs and trailing characters.
-"set listchars=tab:»·,trail:·,eol:¬
-set listchars=tab:»·,trail:·
+set listchars=tab:»·,trail:·,eol:¬
+"set listchars=tab:»·,trail:·
 set list
 
 " Status Line --- {{{
@@ -72,11 +74,9 @@ set statusline+=
 filetype plugin indent on
 
 " autocmd VimEnter * GuiColorScheme knoxville
-"autocmd VimEnter * NERDTree
 
 if('has_autocmd')
     autocmd filetype python set expandtab
-"	autocmd BufEnter * NERDTreeMirror
 	autocmd VimEnter * wincmd
 endif
 
@@ -115,7 +115,7 @@ nnoremap <c-k> <c-w>k<esc>
 nnoremap <c-l> <c-w>l<esc>
 " Sensible save commands
 nnoremap <c-s> :w<cr>
-nnoremap <leader>v :set paste<cr>
+nnoremap <leader>v :set paste<cr>i
 nnoremap <leader>nv :set nopaste<cr>
 " Disable the esc key in Insert mode
 " inoremap <esc> <nop>

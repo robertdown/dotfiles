@@ -33,13 +33,18 @@ Host sm
     PreferredAuthentications publickey
 
 Host monkey-dev
-    HostName dev.streammonkey.com
+    HostName sm-dev.streammonkey.com
     Port 32792
-    IdentityFile=~/Documents/pems/sm2012.pem
+    IdentityFile=~/Documents/pems/sm2014.pem
     User=ubuntu
 
 Host monkey-control
     HostName monkeycontrol.streammonkey.com
+    IdentityFile=~/Documents/pems/sm2012.pem
+    User=ubuntu
+
+Host monkey-api
+    HostName api.streammonkey.com
     IdentityFile=~/Documents/pems/sm2012.pem
     User=ubuntu
 
