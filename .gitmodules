@@ -22,3 +22,15 @@
 [submodule "vim/vim/bundle/riv"]
 	path = vim/vim/bundle/riv
 	url = git@github.com:vim-scripts/riv.vim.git
+[submodule "vim/vim/bundle/vim-airline"]
+	path = vim/vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/vim/bundle/vim-colors-aloe"]
+	path = vim/vim/bundle/vim-colors-aloe
+	url = git@github.com:robbschiller/vim-colors-aloe.git
+[submodule "vim/vim/bundle/molokai"]
+	path = vim/vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/vim/bundle/vim-markdown"]
+	path = vim/vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git

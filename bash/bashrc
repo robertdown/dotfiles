@@ -30,6 +30,9 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' 
 }
 
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
 # Prompt changes
 PS1="\[\033[0;34m\]\u [\A] \W \[\033[0;33m\]\$(parse_git_branch)\[\033[m\]\n\$ "
 
@@ -57,3 +60,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export NVM_DIR="/Users/rdown/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+

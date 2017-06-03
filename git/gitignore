@@ -26,6 +26,7 @@ dwsync.xml
 nbproject
 .idea/
 *.sublime-*
+.vscode/
 
 # OS generated files
 ._*
@@ -36,6 +37,7 @@ nbproject
 desktop.ini
 ehthumbs.db
 Thumbs.db
+.com.apple.timemachine.supported
 
 # Other dev-related files
 *.bak
@@ -109,3 +111,6 @@ local.properties
 # PDT-specific
 .buildpath
 ### END ECLIPSE ###
+
+.agignore
+node_modules/

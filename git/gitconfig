@@ -11,7 +11,8 @@
 [user]
 	name = Robert Down
 	email = robertdown@live.com
-  	signingkey = "5D4305E9"
+	signingkey = "8D06EF4B"
+	signkey = A356DEED
 
 [color]
   diff = auto
@@ -34,10 +35,10 @@
   whitespace = white reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
-  branch = magenta
+  added = green
+  changed = yellow
+  untracked = magenta
+  branch = white
 
 [core]
   pager = less -FRSX
@@ -45,10 +46,10 @@
 	excludesfile = /Users/rdown/.gitignore
 
 [diff]
-	tool = diffmerge
+	tool = default-difftool
 
-[difftool]
-  prompt = false
+[difftool "default-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 
 [merge]
 	tool = diffmerge
@@ -67,8 +68,8 @@
   bM = branch -M
   bs = show-branch
   bS = show-branch -a
-
   sm = submodule
+  f  = flow
 
   # checkout/fetch/merge/push/rebase
   # checkout
@@ -96,6 +97,7 @@
   # commit
   c      = commit -v
   ca     = commit --all -v
+  cs     = commit --gpg-sign
   cm     = commit --message
   cam    = commit --all --message
   camend = commit --amend --reuse-message HEAD
@@ -133,11 +135,13 @@
   rex = remote rm
   rem = remote rename
 
+  pr = pull-request
+
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
 [push]
 	default = simple
@@ -150,3 +154,15 @@
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+[commit]
+	gpgsign = false
+	template = /Users/rdown/.stCommitMsg
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[github]
+	user = rdown
+	token = d2985e05546d6001e92ae1a26f2b6658bb841942
+[pull]
+	rebase = false

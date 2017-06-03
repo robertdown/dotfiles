@@ -18,6 +18,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Color Scheme --- {{{
 set background=dark
+let g:molokai_original = 1
+let g:rehash256 = 1
 colorscheme starlight
 " End Color Scheme --- }}}
 
