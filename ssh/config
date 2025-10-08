@@ -27,54 +27,8 @@ Host *
     #ControlMaster auto
     #ControlPath ~/.ssh/master/%r@%h:%p
 
-Host sm
-    HostName starlightmedia.us
-    Port 2222
-    PreferredAuthentications publickey
+Host github.com-personal
+	HostName github.com
+	User=git
+	IdentityFile=~/.ssh/master/github.personal
 
-Host monkey-dev
-    HostName sm-dev.streammonkey.com
-    Port 32792
-    IdentityFile=~/Documents/pems/sm2014.pem
-    User=ubuntu
-
-Host monkey-control
-    HostName monkeycontrol.streammonkey.com
-    IdentityFile=~/Documents/pems/sm2012.pem
-    User=ubuntu
-
-Host monkey-api
-    HostName api.streammonkey.com
-    IdentityFile=~/Documents/pems/sm2012.pem
-    User=ubuntu
-
-Host rdown-old
-    HostName 23.21.251.167
-    User=rdown
-
-Host rdown-old-emerg
-    HostName 23.21.251.167
-    IdentityFile=~/pems/starlightmedia.pem
-    User=ec2-user
-
-Host rdown
-    HostName 23.23.225.233
-    IdentityFile=~/pems/rdtservices.pem
-    User=ec2-user
-    Port=32792
-    
-Host starlightmedia.us
-	HostName starlightmedia.us
-	Port 2222
-
-Host aletheia
-	HostName aletheiagroup.net
-	Port 22
-	User=aletheiagroup.net
-	IdentityFile=~/pems/aletheiagroup.net.pem
-
-#Host local
-#	IdentityFile=~/pems/rdown
-#	HostName robertdown.net
-#	Port 22
-#	User=rdown

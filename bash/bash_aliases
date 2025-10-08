@@ -4,9 +4,8 @@
 alias ls='ls -acFGhl'
 alias sl='ls'
 alias svim='sudo vim'
-alias g='/usr/local/bin/hub'
+alias g='git'
 alias c='clear'
-alias z='sudo zendctl'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../../../'
@@ -43,11 +42,7 @@ alias firewall=iptlist
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
 alias wget='wget -c'
-alias svim='sudo vim'
 alias pu='/usr/local/bin/phpunit'
-alias cmp='composer'
-alias dr='drush'
-alias easy_install='sudo easy_install'
 alias flushcache='dscacheutil -flushcache'
 
 #todo.txt
@@ -58,17 +53,6 @@ alias t='todo'
 alias gs='g status'
 alias gcom='g commit -m'
 
-alias sc=sproutcore
-alias v='vagrant'
-alias py='python'
-alias py3='python3'
+alias d='docker'
+alias dc='docker-compose'
 
-# Load xdebug Zend extension with php command
-alias php='php -dzend_extension=xdebug.so'
-# # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
-alias phpunit='php $(which phpunit)'
-alias dk='docker'
-alias dkc='docker-compose'
-
-alias ff='/Applications/Firefox.app/Contents/MacOS/firefox'
-alias oe='openemr'
