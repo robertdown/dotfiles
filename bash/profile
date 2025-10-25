@@ -1,0 +1,9 @@
+# ~/.profile
+# POSIX login shell hook.  Only hands off to ~/.bashrc when ~/.bash_profile
+# is absent (e.g. Debian/Ubuntu).  This avoids recursive sourcing.
+
+if [ -n "$BASH_VERSION" ]; then
+    if [ ! -f "$HOME/.bash_profile" ] && [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi

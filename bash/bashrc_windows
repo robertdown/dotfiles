@@ -1,0 +1,33 @@
+# ~/.bashrc_windows
+# Git Bash / MSYS2 / Cygwin environment tweaks.
+
+if [ -n "$__RJD_BASHRC_WINDOWS_LOADED" ]; then
+    return 0 2>/dev/null || exit 0
+fi
+__RJD_BASHRC_WINDOWS_LOADED=1
+
+case "$(uname -s 2>/dev/null)" in
+    MINGW*|MSYS*|CYGWIN*) ;;
+    *) return 0 2>/dev/null || exit 0 ;;
+esac
+
+# Rebuild PATH gently: keep what Git Bash bootstraps, then append ours.
+# Git Bash already deduplicates many Windows paths, so only add user bins.
+__rjd_path_append_unique "$HOME/bin"
+__rjd_path_append_unique "$HOME/.local/bin"
+__rjd_path_append_unique "$HOME/.dotfiles/bin"
+
+# Optional: VS Code + additional tooling if available.
+if [ -d "/c/Users" ]; then
+    _rjd_windows_user="${USERNAME:-$USER}"
+    for code_win in "/c/Users/${_rjd_windows_user}/AppData/Local/Programs/Microsoft VS Code/bin" \
+                    "/c/Program Files/Microsoft VS Code/bin"; do
+        if [ -d "$code_win" ]; then
+            __rjd_path_append_unique "$code_win"
+            break
+        fi
+    done
+    unset _rjd_windows_user
+fi
+
+export PATH

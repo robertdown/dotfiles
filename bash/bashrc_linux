@@ -1,0 +1,41 @@
+# ~/.bashrc_linux
+# Native Linux (non-WSL) environment setup.
+
+if [ -n "$__RJD_BASHRC_LINUX_LOADED" ]; then
+    return 0 2>/dev/null || exit 0
+fi
+__RJD_BASHRC_LINUX_LOADED=1
+
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    return 0 2>/dev/null || exit 0
+fi
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+__rjd_path_append_unique "$HOME/.local/bin"
+__rjd_path_append_unique "$HOME/.dotfiles/bin"
+
+export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
+if [ -d "$PYENV_ROOT" ]; then
+    __rjd_path_prepend_unique "$PYENV_ROOT/bin"
+    __rjd_path_prepend_unique "$PYENV_ROOT/shims"
+    if [ -x "$PYENV_ROOT/bin/pyenv" ]; then
+        eval "$("$PYENV_ROOT/bin/pyenv" init - --no-rehash 2>/dev/null || "$PYENV_ROOT/bin/pyenv" init - 2>/dev/null)"
+        if "$PYENV_ROOT/bin/pyenv" commands 2>/dev/null | grep -q 'virtualenv-init'; then
+            eval "$("$PYENV_ROOT/bin/pyenv" virtualenv-init - 2>/dev/null)"
+        fi
+    fi
+    __rjd_path_prepend_unique "$PYENV_ROOT/shims"
+fi
+
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+fi
+if [ -s "$NVM_DIR/bash_completion" ]; then
+    . "$NVM_DIR/bash_completion"
+fi
+
+__rjd_path_append_unique "$HOME/.cargo/bin"
+__rjd_path_append_unique "$HOME/.rvm/bin"
+
+export PATH

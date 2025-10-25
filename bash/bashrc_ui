@@ -1,0 +1,78 @@
+# ~/.bashrc_ui
+#
+# Interactive shell customizations only.  No PATH/runtimes here.
+
+if [ -n "$__RJD_BASHRC_UI_LOADED" ]; then
+    return 0 2>/dev/null || exit 0
+fi
+__RJD_BASHRC_UI_LOADED=1
+
+# Only run for interactive shells (double-checked for safety)
+case $- in
+    *i*) ;;
+    *) return 0 ;;
+esac
+
+########################################
+# History tuning
+########################################
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend
+
+__rjd_history_sync() {
+    history -a
+    history -c
+    history -r
+}
+
+case ";$PROMPT_COMMAND;" in
+    *";__rjd_history_sync;"*) ;;
+    *) PROMPT_COMMAND="__rjd_history_sync${PROMPT_COMMAND:+;$PROMPT_COMMAND}" ;;
+esac
+
+########################################
+# Completions
+########################################
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    # shellcheck source=/etc/bash_completion
+    . /etc/bash_completion
+fi
+
+########################################
+# Git prompt helper
+########################################
+if [ -z "$__RJD_GIT_PROMPT_LOADED" ]; then
+    if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+        # shellcheck source=/usr/share/git/completion/git-prompt.sh
+        . /usr/share/git/completion/git-prompt.sh
+        __RJD_GIT_PROMPT_LOADED=1
+    elif [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+        # Homebrew location on macOS
+        # shellcheck source=/usr/local/etc/bash_completion.d/git-prompt.sh
+        . /usr/local/etc/bash_completion.d/git-prompt.sh
+        __RJD_GIT_PROMPT_LOADED=1
+    fi
+fi
+
+########################################
+# Prompt
+########################################
+if type __git_ps1 >/dev/null 2>&1; then
+    PS1='\[\e[38;5;242m\]\u [\t] \W\[\e[0;33m\]$(__git_ps1 " %s")\[\e[0m\]\n$ '
+else
+    PS1='\[\e[38;5;242m\]\u [\t] \W\[\e[0m\]\n$ '
+fi
+
+export LESS='-R'
+
+if command -v dircolors >/dev/null 2>&1 && [ -f "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b "$HOME/.dircolors")"
+fi
+
+if command -v __rjd_source_if_exists >/dev/null 2>&1; then
+    __rjd_source_if_exists "$HOME/.bash_aliases"
+else
+    [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
+fi

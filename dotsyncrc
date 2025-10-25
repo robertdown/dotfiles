@@ -24,6 +24,12 @@ dotsyncrc
 bash/bash_profile
 bash/bash_aliases
 bash/bashrc
+bash/bashrc_ui
+bash/bashrc_wsl
+bash/bashrc_linux
+bash/bashrc_macos
+bash/bashrc_windows
+bash/profile
 #ctags/ctags
 #cmus
 #curl/curlrc
@@ -93,4 +99,3 @@ RDOWN-DELL
 #host8.example.net               rsync=host2.example.com                                #rsync mirror, push from host2
 #host9.example.net               rsync=host2.example.com                                #rsync mirror, push from host2
 [endhosts]
-

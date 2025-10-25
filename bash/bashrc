@@ -1,81 +1,97 @@
-# bashrc file
+# ~/.bashrc
+#
+# Central bootstrap for all Bash shells.  This file is intentionally small:
+# it detects the current platform, loads the appropriate environment module,
+# and (for interactive shells) loads UI niceties.  All PATH/runtimes belong
+# in platform modules, while prompts/aliases live in ~/.bashrc_ui.
 
-# Import our aliases
-if [ -a ~/.bash_aliases ]
-then
-	source ~/.bash_aliases
+########################################
+# Safety: run once per shell
+########################################
+if [ -n "$__RJD_BASHRC_LOADED" ]; then
+    return 0 2>/dev/null || exit 0
 fi
+__RJD_BASHRC_LOADED=1
 
-# Import any env vars
-if [ -a ~/.envvars ]
-then
-	source ~/.envvars
-fi
-
-# xterm colors
-if [ -a /usr/share/terminfo/x/xterm-256color ]
-then
-	export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
-fi
-
-# RVM??
-if test -f ~/.rvm/scripts/rvm; then
-    [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
-fi
-
-# Git branch in prompt.
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' 
+########################################
+# Helpers (shared by platform modules)
+########################################
+__rjd_source_if_exists() {
+    [ -f "$1" ] && . "$1"
 }
 
-# Git completion
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-	source /opt/local/etc/profile.d/bash_completion.sh
-elif [ -f /usr/share/bash-completion/completions/git ]; then
-	source /usr/share/bash-completion/completions/git
-elif [ -f ~/.git-completion.bash ]; then
-	source ~/.git-completion.bash
+__rjd_path_prepend_unique() {
+    local entry="${1%/}"
+    [ -n "$entry" ] || return
+    local IFS=:
+    local part
+    local new_path=("$entry")
+    for part in $PATH; do
+        [ -z "$part" ] && continue
+        [ "$part" = "$entry" ] && continue
+        new_path+=("$part")
+    done
+    PATH=$(IFS=:; echo "${new_path[*]}")
+}
+
+__rjd_path_append_unique() {
+    local entry="${1%/}"
+    [ -n "$entry" ] || return
+    local IFS=:
+    local part
+    for part in $PATH; do
+        [ "$part" = "$entry" ] && return
+    done
+    PATH=${PATH:+${PATH}:}$entry
+}
+
+########################################
+# Detect platform
+########################################
+__RJD_BASH_PLATFORM=""
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    __RJD_BASH_PLATFORM="wsl"
+else
+    case "$(uname -s 2>/dev/null)" in
+        Darwin)
+            __RJD_BASH_PLATFORM="macos"
+            ;;
+        Linux)
+            __RJD_BASH_PLATFORM="linux"
+            ;;
+        MINGW*|MSYS*|CYGWIN*)
+            __RJD_BASH_PLATFORM="windows"
+            ;;
+    esac
+fi
+export __RJD_BASH_PLATFORM
+
+case "$__RJD_BASH_PLATFORM" in
+    wsl)
+        __rjd_source_if_exists "$HOME/.bashrc_wsl"
+        ;;
+    macos)
+        __rjd_source_if_exists "$HOME/.bashrc_macos"
+        ;;
+    linux)
+        __rjd_source_if_exists "$HOME/.bashrc_linux"
+        ;;
+    windows)
+        __rjd_source_if_exists "$HOME/.bashrc_windows"
+        ;;
+esac
+
+########################################
+# Interactive layer (prompt, aliases…)
+########################################
+__rjd_is_interactive=0
+case $- in
+    *i*) __rjd_is_interactive=1 ;;
+esac
+
+if [ "$__rjd_is_interactive" -eq 1 ]; then
+    __rjd_source_if_exists "$HOME/.bashrc_ui"
 fi
 
-# Git prompt
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
-  source /usr/share/git-core/contrib/completion/git-prompt.sh
-elif [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-fi
-
-# Prompt changes
-PS1="\[\033[38;5;242m\]\u [\A] \W \[\033[0;33m\]\$(parse_git_branch)\[\033[m\]\n\$ "
-
-if [ -d "$HOME/.local/bin" ]
-then
-	PATH=$PATH:$HOME/.local/bin
-fi
-
-if [ -d "$HOME/.dotfiles/bin" ]
-then
-	PATH=$PATH:$HOME/.doftiles/bin
-fi
- 
-export EDITOR=vim
-export VISUAL=vim
-export CAPP_BUILD="/Users/rdown/cap/build/"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session
-
-complete -C aws_completer aws
-
-PATH=$PATH:$HOME/.composer/vendor/bin
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="/Users/rdown/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
-
+unset __rjd_is_interactive
+# end ~/.bashrc
