@@ -62,7 +62,7 @@ fi
 if type __git_ps1 >/dev/null 2>&1; then
     PS1='\[\e[38;5;242m\]\u [\t] \W\[\e[0;33m\]$(__git_ps1 " %s")\[\e[0m\]\n$ '
 else
-    PS1='\[\e[38;5;242m\]\u [\t] \W\[\e[0m\]\n$ '
+    PS1='\[\e[38;5;242m\]\u [\t] \W\\e[0m\]\n$ '
 fi
 
 export LESS='-R'
