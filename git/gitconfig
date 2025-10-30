@@ -166,3 +166,6 @@
 	token = d2985e05546d6001e92ae1a26f2b6658bb841942
 [pull]
 	rebase = false
+[init]
+	defaultBranch = master
+
