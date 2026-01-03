@@ -32,3 +32,8 @@ Host github.com-personal
 	User=git
 	IdentityFile=~/.ssh/master/github.personal
 
+Host github.com-polaris
+	HostName github.com
+	User=git
+	IdentityFile=~/.ssh/github.polaris
+
