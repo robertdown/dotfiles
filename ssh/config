@@ -27,8 +27,13 @@ Host *
     #ControlMaster auto
     #ControlPath ~/.ssh/master/%r@%h:%p
 
-Host github.com-personal
+Host github.com
 	HostName github.com
 	User=git
 	IdentityFile=~/.ssh/master/github.personal
+
+Host github.com-polaris
+	HostName github.com
+	User=git
+	IdentityFile=~/.ssh/master/github.polaris
 
